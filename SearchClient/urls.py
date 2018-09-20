@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from search.views import IndexView, SearchSuggest, SearchView, favicon_view
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
+    path('', IndexView.as_view(), name="index"),
+    # path('favicon.ico', favicon_view),
+
+    path('suggest/', SearchSuggest.as_view(), name="suggest"),
+    path('search/', SearchView.as_view(), name="search"),
 ]
